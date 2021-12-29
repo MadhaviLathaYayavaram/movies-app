@@ -1,0 +1,87 @@
+.App {
+  background-color: bisque;
+}
+
+
+body {
+  margin: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+}
+
+.movie-container {
+    background-color: rgb(241, 235, 235);
+  padding:10px;
+  width:340px;
+  border-radius: 10px;
+
+}
+
+.movie-list {
+  display:flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: rgb(190, 189, 186);
+ 
+}
+
+.movie-poster {
+  height:fit-content;
+  width: 340px;
+  object-fit:cover;
+  object-position: center;
+ 
+}
+
+.movie-specs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movie-rating {
+  font-size: 18px;
+}
+
+.movie-name {
+  font-size: 24px;
+  margin: 0;
+  font-weight: bold;
+  color: rgb(1, 1, 2);
+  
+}
+
+.movie-summary {
+
+  margin-top: 0px;
+  }
+
+.counter {
+  display:flex;
+  margin-inline: 20px;
+  justify-content: space-between;
+
+}
+.likes-dislikes {
+ font-size: 25px;
+}
+.movie-show-button {
+  margin-left: 60px;
+   margin-bottom: 10px;
+   font-size: 15px;
+}
+.add-color-form {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 250px;
+}
+.add-movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width:100%;
+  align-content: center;
+  background-color: rgb(182, 245, 245);
+ }
