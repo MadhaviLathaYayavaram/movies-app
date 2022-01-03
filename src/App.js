@@ -92,7 +92,7 @@ import {About} from './About';
         </Route>
 
         <Route path="/movielist">
-          <MovieList movie =  {movies}  /> 
+          <MovieList movies =  {movies}  /> 
         </Route>
 
         <Route path="/addmovie">
