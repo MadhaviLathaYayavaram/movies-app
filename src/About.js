@@ -1,15 +1,3 @@
-function About (){
-return 
-(
-    <div> 
-
-       <p> This is About Section</p>
-
-    </div>
-
-
-);
+export function About(){
+return (<h3>My Movies</h3> );
 }
-
-export default About;
-

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-function AddColor() {
+export function AddColor() {
   const [color, setColor] = useState("blue");
   const styles = { backgroundColor: color };
   const [colors, setColors] = useState(["blue", "orange"]);
@@ -39,5 +39,4 @@ function ColorBox({ color }) {
 
 }
 
-export default AddColor;
 
