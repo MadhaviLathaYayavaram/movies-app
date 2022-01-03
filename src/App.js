@@ -41,25 +41,7 @@ import {About} from './About';
     
               ];
                   
-      const [moviename,setMovieName] = useState("");
-      const [poster,setPoster] =useState("");
-      const [rating, setRating] = useState("");
-      const [summary,setSummary] = useState("");
-        
-      
-       const [movies, setMovies]= useState(INITIAL_MOVIES);
-      const addMovie = () => {
-        const newMovie = {
-            moviename:moviename, 
-            poster:poster,
-            rating:rating, 
-            summary:summary,};
-             setMovies([ ...movies, newMovie]);
-          
-            
-      };
-           
-        
+              const [movies, setMovies]= useState(INITIAL_MOVIES);
     
       return (
         <div className='App'>

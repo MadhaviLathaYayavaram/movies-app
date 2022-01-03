@@ -3,17 +3,23 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 
 export function AddMovie({movies,setMovies}) {
-          console.log ({mv});
+  const [moviename,setMovieName] = useState("");
+  const [poster,setPoster] =useState("");
+  const [rating, setRating] = useState("");
+  const [summary,setSummary] = useState("");
+    
+          
+    
           const addMovie = () => {
             const newMovie = {
                 moviename:moviename, 
                 poster:poster,
                 rating:rating, 
                 summary:summary,};
-                 setMovies([ ...movies, newMovie]);
+                 setMovies([ ...movies, newMovie]); }
             
-          };  
-                      
+        
+                  
 
   return ( 
     <div className='add-movie-container'>
