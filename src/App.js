@@ -40,7 +40,24 @@ import {About} from './About';
                 }
     
               ];
-           
+                  
+      const [moviename,setMovieName] = useState("");
+      const [poster,setPoster] =useState("");
+      const [rating, setRating] = useState("");
+      const [summary,setSummary] = useState("");
+        
+      
+       const [movies, setMovies]= useState(INITIAL_MOVIES);
+      const addMovie = () => {
+        const newMovie = {
+            moviename:moviename, 
+            poster:poster,
+            rating:rating, 
+            summary:summary,};
+             setMovies([ ...movies, newMovie]);
+          
+            
+      };
            
         
     
@@ -97,7 +114,7 @@ import {About} from './About';
         </Route>
 
         <Route path="/addmovie">
-          <AddMovie movie = {movies} />
+          <AddMovie movie = {movies} setMovies={setMovies}/>
         </Route>
 {/*
         <Route path="/">
