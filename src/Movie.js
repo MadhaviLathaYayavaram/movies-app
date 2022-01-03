@@ -8,11 +8,11 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 
 export function Movie({moviename,rating, summary,poster}) {
-  const movie = [{
+  const movie = {
     moviename:moviename, 
     poster:poster,
     rating:rating, 
-    summary:summary,}];
+    summary:summary,};
 
   const styles = {color: movie.rating<8 ? "crimson" :"teal" }; 
   const [show,setShow] = useState(true);

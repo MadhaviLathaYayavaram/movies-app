@@ -18,7 +18,7 @@ export function AddColor() {
       {/*<button onClick={() =>setColors([...colors,color])} >  Add Color </button>*/}
 
 
-      <Button variant="outlined" onClick={() => setColors([...colors, color])}>Outlined</Button>
+      <Button variant="outlined" onClick={() => setColors([...colors, color])}>Add Color</Button>
       {colors.map((clr) => (<ColorBox color={clr} />))}
     </div>
   );
