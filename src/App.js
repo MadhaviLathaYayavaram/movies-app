@@ -1,9 +1,13 @@
 import './App.css';
 import { MovieList } from './MovieList';
 import { useState } from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-    
+import React from "react";
+import { Switch, Route, Link } from "react-router-dom";
+import {AddColor} from './AddColor';
+import {AddMovie} from './AddMovie';
+import {About} from './About';
+
+
     
      function App() {
 
@@ -37,116 +41,77 @@ import TextField from '@mui/material/TextField';
     
               ];
            
-      const [moviename,setMovieName] = useState("");
-      const [poster,setPoster] =useState("");
-      const [rating, setRating] = useState("");
-      const [summary,setSummary] = useState("");
+           
         
-      
-       const [movies, setMovies]= useState(INITIAL_MOVIES);
-      const addMovie = () => {
-        const newMovie = {
-            moviename:moviename, 
-            poster:poster,
-            rating:rating, 
-            summary:summary,};
-             setMovies([ ...movies, newMovie]);
-          
-            
-      };
+    
       return (
         <div className='App'>
-        <div className='add-movie-container'>
-          <h2 style={{color:'green'}}> Add A New Movie to the List</h2>
-       
-        <TextField id="moviename" label="Name" variant="outlined" 
-      value= {moviename} style={{width:'50%', padding:'10px'}}
-      onChange={(event) => setMovieName(event.target.value)}
-      
-      />
-      {/* <input placeholder='Name'
-              value= {moviename}
-      onChange={(event) => setMovieName(event.target.value)}  />    
 
-       <input placeholder='Poster URL'
-       value={poster}
-       onChange={(event) => setPoster(event.target.value)} /> */}
+<ul>
+        <li>
+          <a href="/about">About MyMovies</a>
+        </li>
+        <li>
+          {/* Change the url bar but dont refresh */}
+          <Link to="/somewhere">Name of the link</Link>
+        </li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/colorbox">ColorBox</Link>
+        </li>
+        <li>
+          <Link to="/movielist">Movies</Link>
+        </li>
+        <li>
+          <Link to="/addmovie">Add New Movie</Link>
+        </li>
+        
 
-       <TextField id="poster" label="Poster" variant="outlined" 
-      value= {poster}  style={{width:'50%', padding:'10px'}}
-      onChange={(event) => setPoster(event.target.value)}
-      
-      />
 
-      <TextField id="rating" label="Rating" variant="outlined" 
-      value= {rating} style={{width:'50%', padding:'10px'}}
-      onChange={(event) => setRating(event.target.value)}
-      
-      />
+        {/* <li>
+            <a href="/about" >Go to about</a>
+          </li> */}
+      </ul>
 
-      {/*
-       <input placeholder='Rating' 
-       value={rating}
-       onChange={(event) => setRating(event.target.value)}/>
+      <hr />
 
-       <input placeholder='summary'   value={summary}
-      onChange={(event) => setSummary(event.target.value)}/>   */}
+      <Switch>
+        {/* Each route is case, eg. - case '/about': */}
 
-      <TextField id="summary" label="Summary" variant="outlined" 
-      value= {summary}  style={{width:'50%', padding:'10px'}}
-      onChange={(event) => setSummary(event.target.value)}
-      
-      />
+        <Route path="/about">
+          {/* Match url display the below component */}
+          <About />
+        </Route>
 
-       <Button variant="contained" onClick={addMovie} >Add Movie</Button>
+        <Route path="/colorbox">
+          <AddColor />
+        </Route>
 
-       </div>
+        <Route path="/movielist">
+          <MovieList movie =  {movies}  /> 
+        </Route>
 
-       <MovieList movie =  {movies}  /> 
-      
+        <Route path="/addmovie">
+          <AddMovie movie = {movies} />
+        </Route>
+{/*
+        <Route path="/">
+          <Home />
+        </Route>
+*/}
+      </Switch>
 
-      {/*<AddColor />*/}
 
-      </div>
+        </div>
   );
 }
 
 export default App;
 
 
-function AddColor() {
-   const [color,setColor] = useState("blue");
-   const styles = {backgroundColor: color};
-   const [colors, setColors] = useState  (["blue","orange"]);
 
-  return (
-    <div className='add-color-form'>
-      {/*<input value={color} style={styles} placeholder="Enter a Color "  
-      onChange = {(event)=> setColor (event.target.value)}  /> */}
-       
-        <TextField id="standard-basic" label="Enter a Color" variant="standard"  style={styles}
-        onChange = {(event)=> setColor (event.target.value)}  />
-
-      {/*<button onClick={() =>setColors([...colors,color])} >  Add Color </button>*/}
-       
-
-        <Button variant="outlined" onClick={() =>setColors([...colors,color])}>Outlined</Button>
-        {colors.map ((clr) => (<ColorBox color= {clr}/>  ))}
-    </div>
-  )
-}
-
-function ColorBox ({ color }) {
-  const styles = {backgroundColor: color,
-                  height : "50px",
-                  width : '200px',
-                  marginTop : '10px' };
-   
-
-    return (
-      <div style = {styles}>
-      </div>
-    )
-
-
-}

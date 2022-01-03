@@ -14,6 +14,7 @@ body {
   padding:10px;
   width:340px;
   border-radius: 10px;
+  height: min-content;
 
 }
 
@@ -45,10 +46,11 @@ body {
 }
 
 .movie-name {
-  font-size: 24px;
+  font-size: 18px;
   margin: 0;
   font-weight: bold;
   color: rgb(1, 1, 2);
+  max-width: 70%;
   
 }
 
