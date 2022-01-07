@@ -7,8 +7,9 @@ export function MovieList({ movies }) {
         {movies.map(mv => <Movie moviename={mv.moviename}
           rating={mv.rating}
           summary={mv.summary}
-          poster={mv.poster} />)
-          }
+          poster={mv.poster} 
+           id={mv.index} />)
+                     }
         
       </section>
     </div>

@@ -6,27 +6,41 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
+import InfoIcon from '@mui/icons-material/Info';
+import { useHistory } from "react-router-dom";
 
-export function Movie({moviename,rating, summary,poster}) {
+export function Movie({moviename,rating, summary,poster,id}) {
   const movie = {
     moviename:moviename, 
     poster:poster,
     rating:rating, 
-    summary:summary,};
+    summary:summary,
+    id:id,
+    };
 
   const styles = {color: movie.rating<8 ? "crimson" :"teal" }; 
   const [show,setShow] = useState(true);
    const summaryStyles = {display : show ? "block" : "none"};
-
+   const history = useHistory();
+ 
   return (
         <div>
   
             <Card className ="movie-container">
+           {console.log (id)}
         <img src={movie.poster}
           alt={movie.moviename}
           className="movie-poster"></img>
         <div className="movie-specs">
         <p className="movie-name">{movie.moviename}
+        
+        <IconButton aria-label="Movie Details " color='primary' onClick = {  () => {
+                 history.push ("/movies/"+id);
+        }}>
+         
+          <InfoIcon />
+        </IconButton>
+
         <IconButton aria-label="hide" color='primary' onClick = {  () => setShow(!show)}>
 
            {show ? <ExpandLessIcon /> :<ExpandMoreIcon />}  
