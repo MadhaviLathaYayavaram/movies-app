@@ -10,6 +10,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import { useHistory } from "react-router-dom";
 
 export function Movie({moviename,rating, summary,poster,id}) {
+  console.log('id', id)
   const movie = {
     moviename:moviename, 
     poster:poster,
@@ -27,7 +28,6 @@ export function Movie({moviename,rating, summary,poster,id}) {
         <div>
   
             <Card className ="movie-container">
-           {console.log (id)}
         <img src={movie.poster}
           alt={movie.moviename}
           className="movie-poster"></img>

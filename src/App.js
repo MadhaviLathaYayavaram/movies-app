@@ -2,7 +2,7 @@ import './App.css';
 import { MovieList } from './MovieList';
 import { useState } from 'react';
 import React from "react";
-import { Switch, Route, Link, Redirect,useParams } from "react-router-dom";
+import { Switch, Route, Link, Redirect} from "react-router-dom";
 import {AddColor} from './AddColor';
 import {AddMovie} from './AddMovie';
 import {About} from './About';
@@ -96,8 +96,8 @@ import { MovieDetails } from './MovieDetails';
           <Redirect to ="/movies" />
         </Route>
 
-        <Route path="/movies/:{id}">
-            <MovieDts />
+        <Route path="/movies/:id">
+            <MovieDetails />
         </Route>
 
         <Route path = "/movies"  >
@@ -136,7 +136,7 @@ return (
 )
 
 }
-
+/*
 function MovieDts() {
   const {id} = useParams();
   console.log (id);
@@ -147,8 +147,6 @@ return <div>
 </h1>;
 </div>
 }
+*/
 
 export default App;
-
-
-
