@@ -8,8 +8,9 @@ export function MovieList({ movies }) {
           rating={mv.rating}
           summary={mv.summary}
           poster={mv.poster} 
-           id={mv.index} />)
-                     }
+           id={movies.index} /> )
+           
+        }
         
       </section>
     </div>

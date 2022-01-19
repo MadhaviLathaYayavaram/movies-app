@@ -6,7 +6,7 @@ import { Switch, Route, Link, Redirect,useParams } from "react-router-dom";
 import {AddColor} from './AddColor';
 import {AddMovie} from './AddMovie';
 import {About} from './About';
-//import { MovieDetails } from './MovieDetails';
+import { MovieDetails } from './MovieDetails';
 
 
     
@@ -96,7 +96,7 @@ import {About} from './About';
           <Redirect to ="/movies" />
         </Route>
 
-        <Route path="/movies/:id">
+        <Route path="/movies/:{id}">
             <MovieDts />
         </Route>
 

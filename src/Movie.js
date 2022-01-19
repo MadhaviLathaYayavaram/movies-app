@@ -22,7 +22,7 @@ export function Movie({moviename,rating, summary,poster,id}) {
   const [show,setShow] = useState(true);
    const summaryStyles = {display : show ? "block" : "none"};
    const history = useHistory();
- 
+   
   return (
         <div>
   
