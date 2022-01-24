@@ -98,3 +98,16 @@ body {
     object-fit: cover;
 
  }
+
+ .movie-details {
+   padding: 24px;
+   max-width: 640px;
+ }
+
+ ul {
+   display: flex;
+   flex-direction: row;
+ }
+ li {
+   width: "60%";
+ }

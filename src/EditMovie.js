@@ -3,27 +3,40 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { MovieList } from './MovieList';
+import {useParams} from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useHistory } from "react-router-dom";
 
-export function AddMovie({movies,setMovies}) {
-  const history = useHistory();
-  const [moviename,setMovieName] = useState("");
-  const [poster,setPoster] =useState("");
-  const [rating, setRating] = useState("");
-  const [summary,setSummary] = useState("");
-  const [trailer,setTrailer] = useState("");
+export function EditMovie({movies,setMovies}) {
+    
+    
+    const {id}= useParams();
+        const history = useHistory();
+
+    const movie = movies[id];
+
+  const [moviename,setMovieName] = useState(movie.moviename);
+  const [poster,setPoster] =useState(movie.poster);
+  const [rating, setRating] = useState(movie.rating);
+  const [summary,setSummary] = useState(movie.summary);
+  const [trailer,setTrailer] = useState(movie.poster);
     
           
     
-          const adMovie = () => {
-            const newMovie = {
+          const updtMovie = () => {
+
+            const updatedMovie = {
                 moviename:moviename, 
                 poster:poster,
                 rating:rating, 
                 summary:summary,
                 trailer:trailer};
 
-                 setMovies([...movies, newMovie]);
+                const copyMovieList=[...movies];
+                copyMovieList[id]=updatedMovie;
+
+                 setMovies(copyMovieList);
+
                 <MovieList
                  movies={movies} /> }
             
@@ -78,9 +91,13 @@ onChange={(event) => setTrailer(event.target.value)}
 />
 
 
- <Button variant="contained" onClick={adMovie} >Add Movie</Button>
+ <Button variant="contained" onClick={updtMovie} >Update Movie</Button>
  
-  <Button variant="contained" onClick={() => history.push ("/movies")} >Go Back to Movies</Button> 
+<Button variant="outlined"
+              onClick ={() => history.push("/movies")}> Back
+<ArrowBackIcon />
+  </Button>
+
  </div>
 
 );

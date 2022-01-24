@@ -2,80 +2,129 @@ import './App.css';
 import { MovieList } from './MovieList';
 import { useState } from 'react';
 import React from "react";
-import { Switch, Route, Link, Redirect} from "react-router-dom";
+import { Switch, Route, Redirect} from "react-router-dom";
 import {AddColor} from './AddColor';
 import {AddMovie} from './AddMovie';
 import {About} from './About';
 import { MovieDetails } from './MovieDetails';
-
-
+import {EditMovie} from './EditMovie';
+import { Button } from '@mui/material';
+import { useHistory } from "react-router-dom";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Paper from '@mui/material/Paper';
     
      function App() {
+       const [mode, setMode] =useState("dark");
+      const history = useHistory();
+      const theme = createTheme({
+        palette: {
+          mode: mode
+        },
+      });
 
       const INITIAL_MOVIES= [
         { moviename : "The Avengers",
         poster : "https://cdn.images.express.co.uk/img/dynamic/36/750x445/1119643.jpg",
         rating :  8,
         summary :"Marvel's The Avengers (classified under the name Marvel Avengers Assemble in the United Kingdom and Ireland), or simply The Avengers, is\n a 2012 American superhero film based on the Marvel Comics superhero team\n of the same name." ,
-        },
+        trailer: "https://www.youtube.com/embed/eOrNdBpGMv8"
+      },
     
         {moviename : "Interstellar",
           poster : "https://i.ytimg.com/vi/YF1eYbfbH5k/maxresdefault.jpg",
           rating: 8.6,
-          summary :"When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team\n of researchers, to find a new planet for humans."
-          },
+          summary :"When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team\n of researchers, to find a new planet for humans.",
+          trailer: "https://www.youtube.com/embed/zSWdZVtXT7E" ,
+        
+        },
           {moviename : "The Amazing Spider-man",
             poster :"https://occ-0-2596-2164.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABZGYSToVQc-zxEzN4we_OSaap722CgvuUVDLISWEFQ0VbNMzGsbU22kl2O2rqL97y2uQLsjpVeu3ev4dBMB19kE0964.jpg?r=632",
             rating :  9,
-            summary: "In this reboot of the superhero franchise, high school lad Peter Parker learns to wield his newfound powers while facing down arch-villain The Lizard."
-            },
+            summary: "In this reboot of the superhero franchise, high school lad Peter Parker learns to wield his newfound powers while facing down arch-villain The Lizard.",
+            trailer : "https://www.youtube.com/embed/83zBBNStxeo", 
+          },
             {moviename :"Iron man 2",
               poster :"https://m.media-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_FMjpg_UX1000_.jpg",
               rating : 7,
-              summary: "With the world now aware that he is Iron Man, billionaire inventor Tony Stark (Robert Downey Jr.) faces pressure from all sides to share his technology with the military. He is reluctant to divulge the secrets of his armored suit, fearing the information will fall into the wrong hands. With Pepper Potts (Gwyneth Paltrow) and Rhodes (Don Cheadle) by his side, Tony must forge new alliances and confront a powerful new enemy."
-              },
+              summary: "With the world now aware that he is Iron Man, billionaire inventor Tony Stark (Robert Downey Jr.) faces pressure from all sides to share his technology with the military. He is reluctant to divulge the secrets of his armored suit, fearing the information will fall into the wrong hands. With Pepper Potts (Gwyneth Paltrow) and Rhodes (Don Cheadle) by his side, Tony must forge new alliances and confront a powerful new enemy.",
+              trailer:"https://www.youtube.com/embed/wKtcmiifycU"  
+            },
               {moviename:  "Baahubali",
                 poster :  "https://flxt.tmsimg.com/assets/p11546593_p_v10_af.jpg",
                 rating :  8,
-                summary:  "In the kingdom of Mahishmati, Shivudu falls in love with a young warrior woman. While trying to woo her, he learns about the conflict-ridden past of his family and his true legacy."
-                }
-    
+                summary:  "In the kingdom of Mahishmati, Shivudu falls in love with a young warrior woman. While trying to woo her, he learns about the conflict-ridden past of his family and his true legacy.",
+                trailer: "https://www.youtube.com/embed/sOEg_YZQsTI" 
+              },
+              {moviename:  "Thor",
+                poster :  "https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Chris_Hemsworth_as_Thor.jpg/220px-Chris_Hemsworth_as_Thor.jpg",
+                rating :  9,
+                summary:  "The Thor film series is a run of four movies (so far) set in the Marvel Cinematic Universe consisting of Thor, Thor: The Dark World, Thor: Ragnarok and the currently-in-development Thor: Love and Thunder. The series is anchored by Chris Hemsworth as Thor, Tom Hiddleston as Loki and Natalie Portman as Jane Foster.",
+                trailer: "https://www.youtube.com/embed/JOddp-nlNvQ" 
+              }
+
               ];
                   
               const [movies, setMovies]= useState(INITIAL_MOVIES);
 
               
     
-      return (       <div className='App'>
+      return (       
+      
+      
+      
+      <div className='App'>
 
-<ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/colorbox">ColorBox</Link>
-        </li>
-        <li>
-          <Link to="/films">Films</Link>
-        </li>
-        <li>
-          <Link to="/movies">Movies</Link>
-        </li>
-        <li>
-          <Link to="/addmovie">Add New Movie</Link>
-        </li>
+<ThemeProvider theme={theme}>
+<Paper elevation={4} style= {{borderRadius:"0px"}} />
+
+<AppBar position="static" style={{marginBottom:"20px"}}>
+        <Toolbar>
+          <Button variant='text' color='inherit' 
+                  onClick={()=> history.push('/')} >  Home
+
+          </Button>
+          <Button variant='text' color='inherit' 
+                  onClick={()=> history.push('/about')} > About
+
+          </Button>
+
+          <Button variant='text' color='inherit' 
+                  onClick={()=> history.push('/colorbox')} > Color Game
+
+          </Button>
+
+          <Button variant='text' color='inherit' 
+                  onClick={()=> history.push('/films')} > Films
+
+          </Button>
+
+          <Button variant='text' color='inherit' 
+                  onClick={()=> history.push('/movies')} > Movies
+
+          </Button>
+
+          <Button variant='text' color='inherit' 
+                  onClick={()=> history.push('/addmovie')} > Add New Movie
+
+          </Button>
+
+          <Button 
+                startIcon = {mode==='dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                 style = {{marginLeft :"auto"}}
+                  variant='text' color='inherit' 
+                  onClick={()=> setMode (mode==="light" ? "dark" : "light")} >
+                    {mode === "light" ? "dark" : "light"} mode
+
+          </Button>
         
+        </Toolbar>
+      </AppBar>
 
 
-        {/* <li>
-            <a href="/about" >Go to about</a>
-          </li> */}
-      </ul>
-
-      <hr />
 
       <Switch>
         {/* Each route is case, eg. - case '/about': */}
@@ -92,16 +141,19 @@ import { MovieDetails } from './MovieDetails';
         <Route path="/colorbox">
           <AddColor />
         </Route>
+        <Route path="/movies/edit/:id">
+           <EditMovie movies = {movies} setMovies={setMovies}></EditMovie>
+        </Route>
         <Route path="/films">
           <Redirect to ="/movies" />
         </Route>
 
         <Route path="/movies/:id">
-            <MovieDetails />
+            <MovieDetails movies={movies}/>
         </Route>
 
         <Route path = "/movies"  >
-          <MovieList movies =  {movies}  /> 
+          <MovieList movies =  {movies} setMovies={setMovies}  /> 
         </Route>
 
         <Route path="/addmovie">
@@ -118,7 +170,8 @@ import { MovieDetails } from './MovieDetails';
 */}
       </Switch>
 
-
+      <Paper />
+      </ThemeProvider>
         </div>
   );
 }
