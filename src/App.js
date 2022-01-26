@@ -8,6 +8,7 @@ import {AddMovie} from './AddMovie';
 import {About} from './About';
 import { MovieDetails } from './MovieDetails';
 import {EditMovie} from './EditMovie';
+import { TicTacToe } from './TicTacToe';
 import { Button } from '@mui/material';
 import { useHistory } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
@@ -112,6 +113,11 @@ import Paper from '@mui/material/Paper';
 
           </Button>
 
+          <Button variant='text' color='inherit' 
+                  onClick={()=> history.push('/tictactoe')} > Tic-Tac-Toe
+
+          </Button>
+
           <Button 
                 startIcon = {mode==='dark' ? <Brightness7Icon /> : <Brightness4Icon />}
                  style = {{marginLeft :"auto"}}
@@ -158,6 +164,10 @@ import Paper from '@mui/material/Paper';
 
         <Route path="/addmovie">
           <AddMovie movies = {movies} setMovies={setMovies}/>
+        </Route>
+
+        <Route path="/tictactoe">
+          <TicTacToe />
         </Route>
 
         <Route path="**">
